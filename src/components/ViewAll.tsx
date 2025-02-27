@@ -1,12 +1,18 @@
 import { useEffect, useState } from "react";
-import { getAll } from "../APIServices";
-import {  Table } from "react-bootstrap";
+import { deleteTodo, getAll } from "../APIServices";
+import { Button, Table } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+
 
 function ViewAll() {
   const [todos, settodos] = useState<[number, string, string][]>([]);
+  const navigate = useNavigate();
+
   useEffect(() => {
     //async function to gather the team data when the page renders / component mounts
     async function fetchChat() {
+
+        
       try {
         //call api services using asyncronous function.
         const response = await getAll();
@@ -31,9 +37,19 @@ function ViewAll() {
     fetchChat();
   }, []);
 
+  const deleteTheTodo = async (id: any) => {
 
+    deleteTodo(id);
+    // Remove deleted item from UI
+    settodos((prevTodos) => prevTodos.filter(([todoId]) => todoId !== id));
+    alert("Deleted")
+  };
 
-
+  const updateTodo =(id : any) =>{
+    const number =id.toString();
+    sessionStorage.setItem("number", number)
+    navigate("/update");
+  }
 
   return (
     <div className="content-container">
@@ -55,6 +71,24 @@ function ViewAll() {
                 <td className="chat-name">{todoname || "No name provided"}</td>
                 <td className="chat-name">
                   {tododescription || "No description provided"}
+                </td>
+                <td>
+                  <Button
+                    onClick={() => updateTodo(id)}
+                     variant="primary"
+                    className="update-button"
+                  >
+                    Update
+                  </Button>
+                </td>
+                <td>
+                  <Button
+                    onClick={() => deleteTheTodo(id)}
+                    variant="primary"
+                    className="delete-button"
+                  >
+                    Delete
+                  </Button>
                 </td>
               </tr>
             ))

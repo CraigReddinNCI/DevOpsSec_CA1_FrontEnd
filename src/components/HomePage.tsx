@@ -1,8 +1,7 @@
-function HomePage(){
+import Navigation from "./Navigation";
 
-return <div className="content-container">
-    <h1> Welcome to the Todo App</h1>
-</div>;
+function HomePage(){
+return <div className="content-container"></div>;
 }
 
 export default HomePage;
