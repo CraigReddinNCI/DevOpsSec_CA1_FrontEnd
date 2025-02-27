@@ -21,6 +21,22 @@ export async function create(data: any) {
 }
 
 
+export async function deleteTodo(data: any) {
+  try {
+    const payload = "http://127.0.0.1:3000/todos/" + data;
+    console.log(data);
+    const response = await axios.delete(payload);
+    //log response for debugging
+    console.log(response.data);
+    //return the response to be displayed on client interface
+    console.log("Uptil here works!");
+    return response.data;
+  } catch (error) {
+    return "API call failed";
+  }
+}
+
+
 
 export async function getAll() {
   try {
@@ -34,6 +50,20 @@ export async function getAll() {
   } catch (error) {
     return ("API call failed");
     
+  }
+}
+
+
+export async function update(number : any, data: any) {
+  try {
+    const response = await axios.put("http://127.0.0.1:3000/todos/" + number, data);
+    //log response for debugging
+    console.log(response.data);
+    //return the response to be displayed on client interface
+    console.log("Uptil here works!");
+    return response.data;
+  } catch (error) {
+    return "API call failed";
   }
 }
 
