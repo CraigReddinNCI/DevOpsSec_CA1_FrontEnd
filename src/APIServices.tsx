@@ -6,8 +6,7 @@ export async function create(data: any) {
     // console.log("create API call");
     console.log(data.todo.tododescription);
 
-
-    const response = await axios.post("http://127.0.0.1:3000/todos", data);
+    const response = await axios.post("http://52.70.181.67:3000/todos", data);
     //log response for debugging
     console.log(response);
     //return the response to be displayed on client interface
@@ -20,10 +19,9 @@ export async function create(data: any) {
   }
 }
 
-
 export async function deleteTodo(data: any) {
   try {
-    const payload = "http://127.0.0.1:3000/todos/" + data;
+    const payload = "http://52.70.181.67:3000/todos/" + data;
     console.log(data);
     const response = await axios.delete(payload);
     //log response for debugging
@@ -36,27 +34,9 @@ export async function deleteTodo(data: any) {
   }
 }
 
-
-
 export async function getAll() {
   try {
-
-    const response = await axios.get("http://127.0.0.1:3000/todos");
-    //log response for debugging
-    console.log(response.data);
-    //return the response to be displayed on client interface
-    console.log("Uptil here works!");
-    return response.data;
-  } catch (error) {
-    return ("API call failed");
-    
-  }
-}
-
-
-export async function update(number : any, data: any) {
-  try {
-    const response = await axios.put("http://127.0.0.1:3000/todos/" + number, data);
+    const response = await axios.get("http://52.70.181.67:3000/todos");
     //log response for debugging
     console.log(response.data);
     //return the response to be displayed on client interface
@@ -67,10 +47,26 @@ export async function update(number : any, data: any) {
   }
 }
 
-export async function getTodo(data : any) {
+export async function update(number: any, data: any) {
+  try {
+    const response = await axios.put(
+      "http://52.70.181.67:3000/todos/" + number,
+      data
+    );
+    //log response for debugging
+    console.log(response.data);
+    //return the response to be displayed on client interface
+    console.log("Uptil here works!");
+    return response.data;
+  } catch (error) {
+    return "API call failed";
+  }
+}
+
+export async function getTodo(data: any) {
   try {
     const number = data.toString();
-    const url = "http://127.0.0.1:3000/todos/" + number;
+    const url = "http://52.70.181.67:3000/todos/" + number;
     const response = await axios.get(url);
     //log response for debugging
     console.log(response.data);
