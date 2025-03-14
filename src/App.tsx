@@ -1,7 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import './App.css'
 import Navigation from "./components/Navigation.tsx";
-import HomePage from "./components/HomePage.tsx";
 import Create from "./components/Create.tsx";
 import Update from "./components/Update.tsx";
 import ViewAll from "./components/ViewAll.tsx";
