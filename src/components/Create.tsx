@@ -29,8 +29,10 @@ function Create() {
 
     try {
       await create(data);
+      alert("Your Todo is Saved");
     } catch (error) {
       console.log(error);
+      alert("Your Todo was not Created, please try again");
     }
   };
 
@@ -50,6 +52,7 @@ function Create() {
             type="text"
             name="toDoName"
             placeholder="Write here"
+            required
           />
         </Form.Group>
 
@@ -63,6 +66,7 @@ function Create() {
             as="textarea"
             placeholder="Write description of duties required"
             name="toDoDescription"
+            required
           />
         </Form.Group>
         <Button className="create-button" type="submit">

@@ -39,10 +39,14 @@ function ViewAll() {
 
   const deleteTheTodo = async (id: any) => {
 
+    try{
     deleteTodo(id);
     // Remove deleted item from UI
     settodos((prevTodos) => prevTodos.filter(([todoId]) => todoId !== id));
-    alert("Deleted")
+    alert("Deleted Todo")
+    }catch(e){
+      alert("Issue Deleting Todo, please try again");
+    }
   };
 
   const updateTodo =(id : any) =>{

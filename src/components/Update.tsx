@@ -61,8 +61,10 @@ useEffect(() => {
 
     try {
       await update(formData.id, data);
+      alert("Your Todo is Updated");
     } catch (error) {
       console.log(error);
+      alert("Your Todo was not Updated, please try again");
     }
   };
 

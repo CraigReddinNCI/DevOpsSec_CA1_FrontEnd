@@ -12,8 +12,7 @@ function App() {
       <Navigation />
       <div className="main-content">
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/create" element={<Create />} />
+          <Route path="/" element={<Create />} />
           <Route path="/update" element={<Update />} />
           <Route path="/view_all" element={<ViewAll />} />
         </Routes>
